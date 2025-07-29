@@ -1,0 +1,34 @@
+                                ┌────────────────────┐
+                                │    API Gateway     │
+                                │ (Spring Cloud)     │
+                                └────────┬───────────┘
+                                         │
+          ┌──────────────────────────────┼─────────────────────────────────┐
+          │                              │                                 │
+┌─────────▼────────┐         ┌───────────▼────────────┐        ┌───────────▼─────────┐
+│  Auth Service    │         │   User Service         │        │  VC Request Service │
+│ - Login          │         │ - User profile CRUD    │        │ - Raise VC          │
+│ - JWT Generation │         │ - Role assignment      │        │ - Accept VC         │
+└──────────────────┘         └────────────────────────┘        └─────────────────────┘
+                                                                 │
+                                                                 ▼
+                                                    ┌─────────────────────────┐
+                                                    │   Prepress Service      │
+                                                    │ - Fetch accepted VCs    │
+                                                    │ - Mark VC as completed  │
+                                                    └─────────────────────────┘
+
+┌──────────────────────┐     ┌──────────────────────┐     ┌────────────────────────────┐
+│ Sales Report Service │ ◄── │  Database (Reporting)│ ◄── │ VC Request DB              │
+│ - VC request counts  │     └──────────────────────┘     └────────────────────────────┘
+│ - Stats by user/role │
+└──────────────────────┘
+
+┌──────────────────────┐
+│ Admin Service        │
+│ - Create users       │
+│ - Assign roles       │
+└──────────────────────┘
+
+
+511
